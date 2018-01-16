@@ -101,13 +101,15 @@ class TransactionController extends Controller
     				$message
     			];
     		} else {
-    			$currentAccount = $accountLookup[$legs[0]->account_id];
+                if ( isset( $accountLookup[$legs[0]->account_id] ) ) {
+        			$currentAccount = $accountLookup[$legs[0]->account_id];
 
-    			$freeagentTransactions[$currentAccount][] = [ 
-    				$alert->updated_at->format('d/m/Y'),
-    				number_format( (float) $legs[0]->amount, 2, '.', ''),
-    				$message
-    			];
+        			$freeagentTransactions[$currentAccount][] = [ 
+        				$alert->updated_at->format('d/m/Y'),
+        				number_format( (float) $legs[0]->amount, 2, '.', ''),
+        				$message
+        			];
+                }
     		}
     	}
 

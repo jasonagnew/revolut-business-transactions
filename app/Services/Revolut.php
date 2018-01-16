@@ -69,19 +69,7 @@ class Revolut {
 
         $accounts = json_decode($response->getBody());
 
-        if ( $pocket == false ) {
-            return $accounts;
-        }
-
-        $pocketAccounts = [];
-
-        foreach ( $accounts as $account) {
-            if ( $account->type == 'pocket' ) {
-                 $pocketAccounts[] = $account;
-            }
-        }
-
-        return $pocketAccounts;
+        return $accounts;
     }
 
 
